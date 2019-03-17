@@ -1,2 +1,2 @@
-configs/
-vendor/
+configs/*
+vendor/*
