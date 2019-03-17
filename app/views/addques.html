@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title> {{ title }} </title>
+  <link rel="stylesheet" type="text/css" href="/css/nav.css">
+  <link rel="stylesheet" type="text/css" href="/css/addques.css">
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="container">
+    <div  id="header">
+      <div id="banner">
+        <img src="/assets/banner.png" alt="hey">
+      </div>
+      <div id="nav">
+        <ul>
+          <li><a href="/">Home</a>
+          <li><a href="/problems">Problems</a>
+            {% if logged_in or admin == 1 %}
+            {% if admin == 1 %}
+          <li><a href="/addq">Add Question</a>
+            {% else %}
+          <li><a href="/profile">Profile</a>
+            {% endif %}
+            {% endif %}
+          <li><a href="/leaderboard">Leaderboard</a>
+            {% if logged_in == true %}
+          <li><a href="/logout">Log out</a>
+            {% else %}
+          <li><a href="/login">Log in</a>
+            {% endif %}
+      </div>
+    </div>
+
+    <div id ="addques">
+          <form action="/addq" method="post">
+            <label for="title">Title</label>
+            <input type="text" name="title" > <br> <br>
+            <label for="question">Question</label><br>
+            <textarea          name="question" ></textarea> <br> <br>
+            <label for="answer">Answer</label>
+            <input type="text" name="answer"> <br> <br>
+            <input type="submit" value="Add"> <br>
+            <font style="color:green"> {{ msg }} </font>
+          </form>
+    </div>
+  </div>
+  <center class="trademark">phantom_webacker&trade;</center>
+
+</body>
+
+</html>

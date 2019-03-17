@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title> {{ title}} </title>
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/leaderboard.css">
+  <link rel="stylesheet" type="text/css" href="/css/nav.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="card" id="header">
+      <div id="banner">
+        <img src="/assets/banner.png" alt="hey">
+      </div>
+      <div id="nav">
+        <ul>
+          <li><a href="/">Home</a>
+          <li><a href="/problems">Problems</a>
+            {% if logged_in or admin == 1 %}
+            {% if admin == 1 %}
+          <li><a href="/addq">Add Question</a>
+            {% else %}
+          <li><a href="/profile">Profile</a>
+            {% endif %}
+            {% endif %}
+          <li><a href="/leaderboard">Leaderboard</a>
+            {% if logged_in == true %}
+          <li><a href="/logout">Log out</a>
+            {% else %}
+          <li><a href="/login">Log in</a>
+            {% endif %}
+      </div>
+    </div>
+    <div id="leaderboard">
+      <center>
+        <h3> LEADERBOARD </h3>
+      </center> <br>
+      <table width="100%">
+        {% set rank = 0 %}
+        <tr>
+          <th> Rank </th>
+          <th> Username </th>
+          <th> Points </th>
+        </tr>
+        {% for user in users %}
+        {%if user.admin !=1%}
+        {% if user.username == username %}
+        <tr style="background-color:lightblue">
+          {% else %}
+        <tr>
+          {% endif %}
+          <td> #{{ array_rank[rank] }} </td>
+          <td> <a href="/otherprofile/{{ user.username }}">{{ user.username }} </a> </td>
+          <td> {{ user.points}} </td>
+          {% set rank = rank + 1 %}
+        </tr>
+        {% endif %}
+        {% endfor %}
+        </tr>
+      </table>
+    </div>
+  </div>
+  <br>
+  <center class="trademark">phantom_webacker&trade;</center>
+</body>
+
+</html>

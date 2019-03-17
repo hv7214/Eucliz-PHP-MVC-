@@ -1,0 +1,95 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+  justify-content: space-between;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.problem_container {
+  background-color: white;
+  padding: 20px;
+  margin: 30px;
+}
+
+input[type = text] {
+  width: 20%;
+  height: 50px;
+  font-size: 20px;
+  border: none;
+  border-bottom: 2px solid black;
+  outline: none;
+}
+
+input:focus {
+  border-bottom: 4px solid #34b3a0;
+}
+
+input[type = submit] {
+  border-radius: 10px;
+  background-color: #34b3a0;
+  height: 40px;
+  width: 8%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  margin-bottom: 30px;
+  font-size: 20px;
+  border: 2px solid #34b3a0;
+}
+
+input[type = submit]:hover {
+  background-color: #fff;
+  color: #34b3a0;
+}
+
+.trademark {
+  font-size: 15px;
+}
+
+.editq {
+  padding: 30px;
+  background-color: white;
+  padding: 20px;
+  margin: 30px 20px;
+  width: 60%;
+
+}
+
+textarea {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 25px;
+  color: #3e3e40;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid black;
+  resize: none;
+}
+
+textarea:focus {
+  border-bottom: 4px solid #34b3a0;
+}
+
+input[type = text].txt_admin {
+  width: 100%;
+}

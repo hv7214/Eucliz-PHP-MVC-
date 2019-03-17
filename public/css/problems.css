@@ -1,0 +1,54 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+  justify-content: space-between;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+tr:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+table {
+  min-width: 100%;
+  padding: 30px;
+}
+
+#problems {
+  min-width: 90%;
+  display: flex;
+  align-self: flex-start;
+  border-style: outset;
+  margin-top: 20px;
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+td {
+  padding: 20px;
+}
+
+.card {
+  background-color: white;
+}
+
+.trademark {
+  font-size: 15px;
+}

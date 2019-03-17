@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+</head>
+<link rel="stylesheet" type="text/css" href="/css/nav.css">
+<link rel="stylesheet" type="text/css" href="/css/problem.css">
+<link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+
+<body>
+  <div class="container">
+
+    <div class="card" id="header">
+      <div id="banner">
+        <img src="/assets/banner.png" alt="hey">
+      </div>
+      <div id="nav">
+        <ul>
+          <li><a href="/">Home</a>
+          <li><a href="/problems">Problems</a>
+            {% if logged_in or admin == 1 %}
+            {% if admin == 1 %}
+          <li><a href="/addq">Add Question</a>
+            {% else %}
+          <li><a href="/profile">Profile</a>
+            {% endif %}
+            {% endif %}
+          <li><a href="/leaderboard">Leaderboard</a>
+            {% if logged_in == true %}
+          <li><a href="/logout">Log out</a>
+            {% else %}
+          <li><a href="/login">Log in</a>
+            {% endif %}
+      </div>
+    </div>
+
+    {% if admin == false %}
+    <div class="problem_container">
+      <h3>#{{ problem.number }} {{ problem.title }} </h3> <br>
+      {{ problem.question }} <br> <br>
+
+      {% if logged_in %}
+      <center>
+        <form class="problem" action="/submit/{{ problem.number }}" method="post">
+          <input type="text" name="answer" placeholder="Enter your answer"> <br> <br>
+          <input type="submit" value="Submit"> <br>
+          {% if msg == "Correct" %}
+          <b style="color:green"> {{ msg }} </b>
+          {% else %}
+          <b style="color:red"> {{ msg }} </b>
+          {% endif %}
+        </form>
+      </center> <br>
+      {% else %}
+      <center style="color:red"> Please <a href="/login">LOGIN</a> to submit your answer </center>
+    </div>
+    {% endif %}
+
+    {% else %}
+    <div class="editq">
+
+      <form action="/edit/{{ admin_problem.number }}" method="post">
+        <label for="title">Title</label><br>
+        <input type="text" name="title" value="{{ admin_problem.title }}" class="txt_admin"> <br> <br>
+        <label for="question">Question</label><br> <br>
+        <textarea name="question">{{ admin_problem.question }}</textarea> <br> <br>
+        <label for="answer">Answer</label> <br>
+        <input type="text" name="answer" value="{{ admin_problem.answer }}" class="txt_admin"> <br> <br>
+        <input type="submit" value="Edit"> <br>
+        <font style="font-size:20px;font-weight:bold;background-color:rgba(0,200,0,0.5)"> {{ msg }} </font>
+      </form>
+
+    </div>
+    {% endif %}
+
+
+  </div>
+  <center class="trademark">phantom_webacker&trade;</center>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+  justify-content: space-between;
+}
+
+#leaderboard {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%;
+  align-self: center;
+  margin-top: 50px;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 2px solid grey;
+  text-align: center;
+}
+
+tr:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+a {
+  text-decoration: none;
+  color:black;
+}
+
+.trademark {
+  font-size: 15px;
+}

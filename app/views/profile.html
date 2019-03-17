@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" type="text/css" href="/css/nav.css">
+  <link rel="stylesheet" type="text/css" href="/css/profile.css">
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/circle.scss">
+</head>
+
+<body>
+  <div class="container">
+
+    <div id="header">
+      <div id="banner">
+        <img src="/assets/banner.png" alt="hey">
+      </div>
+      <div id="nav">
+        <ul>
+          <li><a href="/">Home</a>
+          <li><a href="/problems">Problems</a>
+            {% if logged_in or admin == 1 %}
+            {% if admin == 1 %}
+          <li><a href="/addq">Add Question</a>
+            {% else %}
+          <li><a href="/profile">Profile</a>
+            {% endif %}
+            {% endif %}
+          <li><a href="/leaderboard">Leaderboard</a>
+            {% if logged_in == true %}
+          <li><a href="/logout">Log out</a>
+            {% else %}
+          <li><a href="/login">Log in</a>
+            {% endif %}
+      </div>
+    </div>
+    <div class="profile_container">
+      <div class="card" id="basic">
+        <h3>{{ details.username}}</h3><br>
+        Questions Solved: {{ questions_solved }} <br> <br>
+        Rank: # {{ rank }}
+      </div>
+        <svg viewBox="0 0 36 36" class="circular-chart">
+          <text x="14.5" y="1" font-size="1px" fill="rgba(0,200,255,1)">Activity Circle </text>
+          <path class="circle" stroke-dasharray="{{ (questions_solved/total_ques*20) | round }} , 100" d="M18 2.0845
+            a 3.1831 3.1831 0 0 1 0  6.3662
+            a 3.1831 3.1831 0 0 1 0 -6.3662" />
+          <text x="16.7" y="5.7" font-size="1.5px" >{{ (questions_solved/total_ques*100) | round }}% </text>
+        </svg>
+
+    </div>
+  </div>
+  <center class="trademark">phantom_webacker&trade;</center>
+</body>
+
+</html>

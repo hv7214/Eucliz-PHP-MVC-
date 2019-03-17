@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> {{ title }} </title>
+    <link rel="stylesheet" type="text/css" href="/css/login_signup.css">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <link rel="stylesheet"  type = "text/css" href="/css/nav.css">
+    <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="card" id="header">
+      <div id="banner">
+        <img src="/assets/banner.png" alt="hey">
+      </div>
+      <div id="nav">
+        <ul>
+          <li><a href="/">Home</a>
+          <li><a href="/problems">Problems</a>
+            {% if logged_in or admin == 1 %}
+            {% if admin == 1 %}
+          <li><a href="/addq">Add Question</a>
+            {% else %}
+          <li><a href="/profile">Profile</a>
+            {% endif %}
+            {% endif %}
+          <li><a href="/leaderboard">Leaderboard</a>
+            {% if logged_in == true %}
+          <li><a href="/logout">Log out</a>
+            {% else %}
+          <li><a href="/login">Log in</a>
+            {% endif %}
+      </div>
+    </div>
+
+        <div class="form">
+          <div class="signup"> Sign Up </div>
+          <div class="login"> Log In </div> <br> <br>
+          <form class="signup-form" action="/signup" method="post"> <br>
+            <input type="text" name="username" placeholder="username"> <br>
+            <input type="password" name="password" placeholder="password"> <br>
+            <input type="password" name="confirm_password" placeholder="confirm password"> <br>
+            <input type="submit"  value="Register"> <br>
+            <center>
+              {% if msg == Registered %}
+                <font style = "color:green"> {{ msg }} </font>
+              {% else %}
+                <font style = "color:red">   {{ msg }} </font>
+              {% endif %}
+            </center>
+          </form>
+
+          <form class="login-form" action="/login" method="post"> <br>
+            <input type="text" name="username" placeholder="username"> <br>
+            <input type="password" name="password" placeholder="password"> <br>
+            <input type="submit"  class="btn" value="Log in"> <br>
+            <center>
+              {% if msg == "Invalid username or password" %}
+                <font style = "color:red"> {{ msg }} </font>
+              {% endif %}
+            </center>
+          </form>
+        </div>
+
+        <center class="trademark">phantom_webacker&trade;</center>
+
+
+        <script>
+
+          {% if login == true %}
+          $(".signup-form").hide();
+          $(".login").css("background-color", "rgba(0,100,255,0.4)");
+          {% else %}
+          $(".login-form").hide();
+          $(".signup").css("background-color", "rgba(0,100,255,0.4)");
+          {% endif %}
+
+          $(".login").click(function(){
+            $(".signup-form").hide();
+            $(".login-form").show();
+            $(".signup").css("background-color", "white");
+            $(".login").css("background-color", "rgba(0,100,255,0.4)");
+          });
+
+          $(".signup").click(function(){
+            $(".signup-form").show();
+            $(".login-form").hide();
+            $(".login").css("background-color", "white");
+            $(".signup").css("background-color", "rgba(0,100,255,0.4)");
+          });
+
+        </script>
+    </body>
+</html>
